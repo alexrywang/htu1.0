@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.htu.mapper.GjjMapper">
+
+    
+    <resultMap id="UsergjjResult" type="Usergjj">
+        <result property="aid" column="aid"/>
+        <result property="xijyjg" column="xijyjg"/>
+        <result property="jcfsdd" column="jcfsdd"/>
+        <result property="sjfsjgdm" column="sjfsjgdm"/>
+        <result property="xm" column="xm"/>
+        <result property="xmjp" column="xmjp"/>
+        <result property="xb" column="xb"/>
+        <result property="grdjh" column="grdjh"/>
+        <result property="grbh" column="grbh"/>
+        <result property="csny" column="csny"/>
+        <result property="gzsj" column="gzsj"/>
+        <result property="sqgzze" column="sqgzze"/>
+        <result property="zzdh" column="zzdh"/>
+        <result property="sjh" column="sjh"/>
+        <result property="lxdz" column="lxdz"/>
+        <result property="dwmc" column="dwmc"/>
+        <result property="dwdjh" column="dwdjh"/>
+        <result property="khglbbh" column="khglbbh"/>
+        <result property="ccdjsj" column="ccdjsj"/>
+        <result property="zzjgdm" column="zzjgdm"/>
+        <result property="yyzzhm" column="yyzzhm"/>
+        <result property="xzdm" column="xzdm"/>
+        <result property="zjlx" column="zjlx"/>
+        <result property="zjhm" column="zjhm"/>
+        <result property="hzpt" column="hzpt"/>
+        <result property="khsfzhm" column="khsfzhm"/>
+        <result property="kexm" column="kexm"/>
+        <result property="cxsj" column="cxsj"/>
+
+        <collection property="account" ofType="AccountInfo">
+            <id column="id" property="id" />
+            <result column="gjjzh" property="gjjzh" />
+            <result column="khrq" property="khrq" />
+            <result column="cjnyr" property="cjnyr" />
+            <result column="jznyr" property="jznyr" />
+            <result column="dyjcdwmc" property="dyjcdwmc" />
+            <result column="dydwjce" property="dydwjce" />
+            <result column="dydwjcbl" property="dydwjcbl" />
+            <result column="dyjczt" property="dyjczt" />
+            <result column="zjycjnrq" property="zjycjnrq" />
+            <result column="dqgjjnd" property="dqgjjnd" />
+            <result column="ljjncs" property="ljjncs" />
+            <result column="dqye" property="dqye" />
+            <result column="grjce12" property="grjce12" />
+            <result column="grjcbl12" property="grjcbl12" />
+            <result column="dwjcbl12" property="dwjcbl12" />
+        </collection>
+
+        <collection property="extract" ofType="ExtractInfo">
+            <id property="id" column="id" />
+            <result column="gjjzh" property="gjjzh" />
+            <result column="tqyy" property="tqyy" />
+            <result column="tqsj" property="tqsj" />
+            <result column="tqfs" property="tqfs" />
+            <result column="kdtqze" property="kdtqze" />
+            <result column="tqje" property="tqje" />
+            <result column="ljtqje" property="ljtqje" />
+            <result column="gttqrxm" property="gttqrxm" />
+            <result column="gttqrsfzh" property="gttqrsfzh" />
+            <result column="gttqrsfjlgjj" property="gttqrsfjlgjj" />
+        </collection>
+
+        <collection property="loan" ofType="LoanInfo">
+            <id property="id" column="id" />
+            <result column="gjjbh" property="gjjbh" />
+            <result column="gjjdkbh" property="gjjdkbh" />
+            <result column="gjjdkje" property="gjjdkje" />
+            <result column="gjjdknx" property="gjjdknx" />
+            <result column="hkfs" property="hkfs" />
+            <result column="yhke" property="yhke" />
+            <result column="qsrq" property="qsrq" />
+            <result column="dqrq" property="dqrq" />
+            <result column="jqrq" property="jqrq" />
+            <result column="dkye" property="dkye" />
+            <result column="gtxm" property="gtxm" />
+            <result column="gtsfz" property="gtsfz" />
+            <result column="gtsfjlgjj" property="gtsfjlgjj" />
+            <result column="lxdz" property="lxdz" />
+        </collection>
+
+        <collection property="house" ofType="HouseInfo">
+            <id property="id" column="id" />
+            <result column="gfdz" property="gfdz" />
+            <result column="zfdz" property="zfdz" />
+            <result column="fwgmjsjg" property="fwgmjsjg" />
+            <result column="fwzj" property="fwzj" />
+        </collection>
+
+
+    </resultMap>
+
+
+    <select id="login"  resultMap="UsergjjResult">
+        select * from t_sqr  where hzpt=#{hzpt,jdbcType=VARCHAR} and khsfzhm=#{khsfzhm,jdbcType=VARCHAR} and kexm=#{kexm,jdbcType=VARCHAR}  and cxsj=#{cxsj,jdbcType=DATE}
+    </select>
+
+    <select id="findAll" resultMap="UsergjjResult">
+    select a.*,b.*,c.*,d.*,e.*,a.id ,a.xijyjg ,a.jcfsdd ,a.sjfsjgdm ,a.xm ,a.xmjp ,a.xb ,a.grdjh ,a.grbh , a.csny ,a.gzsj , a.sqgzze ,a.zzdh ,a.sjh ,a.lxdz ,a.dwmc ,a.dwdjh ,a.khglbbh ,a.ccdjsj , a.zzjgdm ,a.yyzzhm ,a.xzdm ,a.zjlx , a.zjhm ,a.hzpt ,a.khsfzhm ,a.kexm ,a.cxsj ,b.gjjzh ,b.khrq ,b.cjnyr ,b.jznyr ,b.dyjcdwmc ,b.dydwjce ,b.dydwjcbl , b.dyjczt ,b.zjycjnrq ,b.dqgjjnd ,b.ljjncs ,b.dqye ,b.grjce12 ,b.grjcbl12 ,b.dwjcbl12 ,c.gjjzh ,c.tqyy ,c.tqsj , c.tqfs ,c.kdtqze ,c.tqje ,c.ljtqje ,c.gttqrxm ,c.gttqrsfzh ,c.gttqrsfjlgjj ,d.gjjbh ,d.gjjdkbh ,d.gjjdkje ,d.gjjdknx , d.hkfs ,d.yhke ,d.qsrq ,d.dqrq ,d.jqrq ,d.dkye ,d.gtxm ,d.gtsfz ,d.gtsfjlgjj ,d.lxdz ,e.gfdz ,e.zfdz ,e.fwgmjsjg ,e.fwzj  from t_sqr a left join t_zhxx b on a.id=b.fid left join t_tqxx c on a.id=c.fid left join t_dkxx d on a.id=d.fid left join t_gfxx e on a.id=e.fid
+    </select>
+
+    <select id="findByidcard" resultMap="UsergjjResult">
+     select a.*,b.*,c.*,d.*,e.*,a.id ,a.xijyjg ,a.jcfsdd ,a.sjfsjgdm ,a.xm ,a.xmjp ,a.xb ,a.grdjh ,a.grbh , a.csny ,a.gzsj , a.sqgzze ,a.zzdh ,a.sjh ,a.lxdz ,a.dwmc ,a.dwdjh ,a.khglbbh ,a.ccdjsj , a.zzjgdm ,a.yyzzhm ,a.xzdm ,a.zjlx , a.zjhm ,a.hzpt ,a.khsfzhm ,a.kexm ,a.cxsj ,b.gjjzh ,b.khrq ,b.cjnyr ,b.jznyr ,b.dyjcdwmc ,b.dydwjce ,b.dydwjcbl , b.dyjczt ,b.zjycjnrq ,b.dqgjjnd ,b.ljjncs ,b.dqye ,b.grjce12 ,b.grjcbl12 ,b.dwjcbl12 ,c.gjjzh ,c.tqyy ,c.tqsj , c.tqfs ,c.kdtqze ,c.tqje ,c.ljtqje ,c.gttqrxm ,c.gttqrsfzh ,c.gttqrsfjlgjj ,d.gjjbh ,d.gjjdkbh ,d.gjjdkje ,d.gjjdknx , d.hkfs ,d.yhke ,d.qsrq ,d.dqrq ,d.jqrq ,d.dkye ,d.gtxm ,d.gtsfz ,d.gtsfjlgjj ,d.lxdz ,e.gfdz ,e.zfdz ,e.fwgmjsjg ,e.fwzj  from t_sqr a left join t_zhxx b on a.id=b.fid left join t_tqxx c on a.id=c.fid left join t_dkxx d on a.id=d.fid left join t_gfxx e on a.id=e.fid where a.khsfzhm=#{khsfzhm,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>
